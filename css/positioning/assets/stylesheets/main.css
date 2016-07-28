@@ -1,0 +1,18 @@
+.container {
+    position: relative;
+    width: 300px;
+    margin: 5px auto;
+}
+
+.hat {
+    position: relative;
+    top: 152px;
+    right: 17px;
+}
+
+.glasses {
+    position: relative;
+    z-index: 1;
+    top: 161px;
+    left: 43px;
+}
