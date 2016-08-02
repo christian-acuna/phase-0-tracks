@@ -1,0 +1,29 @@
+- Wait until both doors open.
+- Move forward into elevator.
+- Turn around 180 degrees until you are facing the door
+- Raise your right hand towards the elevator buttons
+- Locate first button on bottom row
+- If B:
+  - remember that B is base floor and is equal to 0
+- else 1
+  - remember that 1 is base floor
+- Count up from 1 or count from B (0) until destination floor has been reached
+- Press button
+- Wait until elevator reaches desired floor
+- When elevator reaches floor, then wait until door open
+- Step out from the elevator
+- Congratulations, you have used an elevator successfully!
+
+Make Bed
+
+1 Pull off all sheets from the bed
+2 Find the bed sheet and take it out from the pile of sheets
+3 Move to right side of the bed and grab the sheet at the top right and bottom right
+4 While holding two corners of the  sheet, throw sheet across the bed until it lays flat on the bed
+5 Move counterclockwise around adjusting flatting the sheet until all corners are flat on the bed
+6 Find the comforter in the pile of sheets
+7 Repeat sets 3 - 5
+8 Find top sheet from pile
+9 Repeat sets 3 - 5
+10 Grab both pillows and place them on the top edge of the bed
+11 Now jump on the bed and relax
