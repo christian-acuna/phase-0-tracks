@@ -1,5 +1,5 @@
 - Wait until both doors open.
-- Move forward into elevator.
+- Move forward into the elevator.
 - Turn around 180 degrees until you are facing the door
 - Raise your right hand towards the elevator buttons
 - Locate first button on bottom row
