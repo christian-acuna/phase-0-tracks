@@ -1,2 +1,100 @@
+/*
+  ========================================
+  Body
+  ========================================
+*/
 body {
+  max-width  : 960px;
+  margin     : 0 auto;
+  background : #304352;
+  background : -webkit-linear-gradient(#304352 , #d7d2cc);
+  background : linear-gradient(#304352 , #d7d2cc);
+  color: #ffffff;
+}
+
+/*
+  ========================================
+  Columns
+  ========================================
+*/
+
+.column-1 {
+  width : 70%;
+  float : left;
+}
+
+.column-2 {
+  width : 30%;
+  float : right;
+}
+
+/*
+  ========================================
+  Header
+  ========================================
+*/
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  color:  #d7d2cc;
+}
+/*
+  ========================================
+  Footer
+  ========================================
+*/
+
+footer {
+  clear : both;
+  width: 80%;
+  padding: 40px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*
+  ========================================
+  Link
+  ========================================
+*/
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+/*
+  ========================================
+  Links
+  ========================================
+*/
+
+li {
+  list-style-type: circle;
+}
+
+@media screen and (max-width: 700px) {
+
+  header {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .column-1 {
+    width : 80%;
+    float : none;
+    margin: 0 auto;
+  }
+
+  .column-2 {
+    width : 80%;
+    float : none;
+    margin: 0 auto;
+  }
+
 }
