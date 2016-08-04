@@ -14,6 +14,7 @@ def encrypt(string)
     end
   end
   puts string
+  string
 end
 
 def decrypt(string)
@@ -32,6 +33,7 @@ def decrypt(string)
     end
   end
   puts string
+  string
 end
 
 encrypt('abc')
@@ -40,3 +42,6 @@ encrypt('a b c')
 decrypt('bcd')
 decrypt('b c d')
 decrypt('afe')
+
+decrypt(encrypt('swordfish'))
+decrypt('txpsegjti')
