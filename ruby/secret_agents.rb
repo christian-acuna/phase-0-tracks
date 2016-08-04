@@ -5,6 +5,9 @@ def encrypt(string)
     if string[index] == ' '
       index += 1
       next
+    elsif string[index] == 'z'
+      string[index] = 'a'
+      index += 1
     else
       string[index] = string[index].next
       index += 1
@@ -32,8 +35,8 @@ def decrypt(string)
 end
 
 encrypt('abc')
-encrypt("zed")
+encrypt('zed')
 encrypt('a b c')
 decrypt('bcd')
 decrypt('b c d')
-decrypt("afe")
+decrypt('afe')
