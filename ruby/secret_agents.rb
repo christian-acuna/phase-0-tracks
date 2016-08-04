@@ -1,3 +1,4 @@
+# OUR METHOD DECLARATIONS
 def encrypt(string)
   length = string.length
   index = 0
@@ -36,13 +37,21 @@ def decrypt(string)
   string
 end
 
-## ask user decrypt or encrypt
+# OUR DRIVER CODE
+
+# ask for agent #
 puts 'What is your agent number'
 agent_number = gets.chomp
+
+# ask whether to encrpyt or decrypt password
 puts "Hello, agent #{agent_number}. Would you like to encrypt or decrypt a password?"
 operation = gets.chomp.downcase
+
+# ask user to enter a password
 puts 'Plese enter a password:'
 password = gets.chomp.downcase
+
+# update user on status of operation
 puts 'Password recieved. Please wait....'
 puts '....'
 puts '......'
@@ -58,9 +67,11 @@ else
   results = decrypt(password)
 end
 
+# Once finished operation, print results to user.
 puts "Operation complete. Your #{operation}ed password is: #{results}"
 
 # TEST CASES
+
 # encrypt('abc')
 # encrypt('zed')
 # encrypt('a b c')
