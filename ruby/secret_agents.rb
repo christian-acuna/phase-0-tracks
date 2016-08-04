@@ -13,7 +13,7 @@ def encrypt(string)
       index += 1
     end
   end
-  puts string
+  # puts string
   string
 end
 
@@ -32,16 +32,41 @@ def decrypt(string)
       index += 1
     end
   end
-  puts string
+  # puts string
   string
 end
 
-encrypt('abc')
-encrypt('zed')
-encrypt('a b c')
-decrypt('bcd')
-decrypt('b c d')
-decrypt('afe')
+## ask user decrypt or encrypt
+puts 'What is your agent number'
+agent_number = gets.chomp
+puts "Hello, agent #{agent_number}. Would you like to encrypt or decrypt a password?"
+operation = gets.chomp.downcase
+puts 'Plese enter a password:'
+password = gets.chomp.downcase
+puts 'Password recieved. Please wait....'
+puts '....'
+puts '......'
+puts '.......'
+puts '........'
+puts '..........'
 
-decrypt(encrypt('swordfish'))
-decrypt('txpsegjti')
+results = ''
+
+if operation == 'encrypt'
+  results = encrypt(password)
+else
+  results = decrypt(password)
+end
+
+puts "Operation complete. Your #{operation}ed password is: #{results}"
+
+# TEST CASES
+# encrypt('abc')
+# encrypt('zed')
+# encrypt('a b c')
+# decrypt('bcd')
+# decrypt('b c d')
+# decrypt('afe')
+#
+# decrypt(encrypt('swordfish'))
+# decrypt('txpsegjti')
