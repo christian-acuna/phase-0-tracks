@@ -27,6 +27,7 @@ end
 puts 'How many employees will be processed?'
 number_of_employees = gets.chomp.to_i
 count = 0
+vampire = 5
 
 while count < number_of_employees
   puts "Hello, employee number #{count + 1}."
@@ -44,7 +45,14 @@ while count < number_of_employees
   puts 'Would you like to enroll in the company’s health insurance?'
   health_insurance = true_or_false(health_insurance)
 
-  vampire = 5
+  puts 'Please name any allergies you have. When you are done please type "done".'
+  allergies_array = []
+  allergy = gets.chomp.downcase
+  
+  if allergy == "sunshine"
+    puts "Probably a vampire."
+    next
+  else
 
   vampire = 0 if pass_age_test && (health_insurance || bread)
   vampire = 1 if !pass_age_test && (!bread || !health_insurance)
