@@ -24,38 +24,44 @@ def age_test(age, year_born)
   end
 end
 
-puts 'Hello'
-puts 'Welcome to our company. We are going to ask you a few questions.'
-puts 'What is you name?'
-name = gets.chomp
-puts 'How old are you?'
-age = gets.chomp.to_i
-puts 'Great, what year were you born?'
-year = gets.chomp.to_i
-pass_age_test = age_test(age, year)
-puts 'Our company cafeteria serves garlic bread.
-Should we order some for you? (Y/N)'
-bread = true_or_false(bread)
-puts 'Would you like to enroll in the company’s health insurance?'
-health_insurance = true_or_false(health_insurance)
-puts "bread = #{bread} and health = #{health_insurance}"
+puts 'How many employees will be processed?'
+number_of_employees = gets.chomp.to_i
+count = 0
 
-vampire = 5
+while count < number_of_employees
+  puts "Hello, employee number #{count + 1}."
+  puts 'Welcome to our company. We are going to ask you a few questions.'
+  puts 'What is you name?'
+  name = gets.chomp
+  puts 'How old are you?'
+  age = gets.chomp.to_i
+  puts 'Great, what year were you born?'
+  year = gets.chomp.to_i
+  pass_age_test = age_test(age, year)
+  puts 'Our company cafeteria serves garlic bread.
+  Should we order some for you? (Y/N)'
+  bread = true_or_false(bread)
+  puts 'Would you like to enroll in the company’s health insurance?'
+  health_insurance = true_or_false(health_insurance)
 
-vampire = 0 if pass_age_test && (health_insurance || bread)
-vampire = 1 if !pass_age_test && (!bread || !health_insurance)
-vampire = 2 if !pass_age_test && !bread && !health_insurance
-vampire = 3 if name == 'Drake Cula' || name == 'Tu Fang'
+  vampire = 5
 
-case vampire
-when 0
-  puts 'Probably not a vampire'
-when 1
-  puts 'Probably a vampire'
-when 2
-  puts 'Almost certanily a vampire'
-when 3
-  puts 'Definitely a vampire'
-when 5
-  puts 'Results inconclusive.'
+  vampire = 0 if pass_age_test && (health_insurance || bread)
+  vampire = 1 if !pass_age_test && (!bread || !health_insurance)
+  vampire = 2 if !pass_age_test && !bread && !health_insurance
+  vampire = 3 if name == 'Drake Cula' || name == 'Tu Fang'
+  count += 1
+  case vampire
+  when 0
+    puts 'Probably not a vampire'
+  when 1
+    puts 'Probably a vampire'
+  when 2
+    puts 'Almost certanily a vampire'
+  when 3
+    puts 'Definitely a vampire'
+  when 5
+    puts 'Results inconclusive.'
+  end
+  puts '--------------------------------'
 end
