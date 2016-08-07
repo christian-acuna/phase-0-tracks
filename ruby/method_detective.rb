@@ -25,6 +25,12 @@ p " suspects".prepend("the usual")
 # => "the usual suspects"
 
 # "The case of the disappearing last letter".<???>
+"The case of the disappearing last letter"[0..-2]
+"The case of the disappearing last letter"[0...-1]
+"The case of the disappearing last letter".slice(0...-1)
+"The case of the disappearing last letter".slice(0..-2)
+"The case of the disappearing last letter".chop
+"The case of the disappearing last letter".chomp("r")
 # => "The case of the disappearing last lette"
 
 # "The mystery of the missing first letter".<???>
