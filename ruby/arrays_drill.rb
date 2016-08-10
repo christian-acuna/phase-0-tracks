@@ -1,3 +1,12 @@
+# take three items and build an array
+def build_array(one, two, three)
+    [one, two, three]
+end
+
+
+p build_array(1, 2, 3)
+puts "------------"
+
 # Create array and add var to array
 array = []
 dog = "dog"
