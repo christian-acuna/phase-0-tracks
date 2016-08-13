@@ -5,7 +5,9 @@ def alias_manager(name)
   first_name = reversed_array[0]
   last_name = reversed_array[1]
 
-  next_vowel(first_name)
+  shifted_first = next_vowel(first_name)
+  shifted_last = next_vowel(last_name)
+  "#{shifted_first} #{shifted_last}"
 end
 
 def split_name(name)
@@ -37,3 +39,4 @@ def next_vowel(first_name)
 end
 
 p next_vowel('Torres')
+p next_vowel('Felicia')

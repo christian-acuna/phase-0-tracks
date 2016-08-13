@@ -16,4 +16,15 @@ describe 'next_vowel_and_constant' do
   it 'shifts vowel to next vowel' do
     expect(next_vowel('Torres')).to eq('Vussit')
   end
+
+  it 'shifts vowel to next vowel' do
+    expect(next_vowel('Felicia')).to eq('Gimodoe')
+  end
+end
+
+
+describe 'alias_manager' do
+  it 'reverse names and shifts vowels by one and constansts by one unless vowel' do
+    expect(alias_manager("Felicia Torres")).to eq('Vussit Gimodoe')
+  end
 end
