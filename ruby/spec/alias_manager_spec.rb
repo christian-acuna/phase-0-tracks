@@ -14,11 +14,11 @@ end
 
 describe 'next_vowel_and_constant' do
   it 'shifts vowel to next vowel' do
-    expect(next_vowel('Torres')).to eq('Vussit')
+    expect(next_vowel_and_constant('Torres')).to eq('Vussit')
   end
 
   it 'shifts vowel to next vowel' do
-    expect(next_vowel('Felicia')).to eq('Gimodoe')
+    expect(next_vowel_and_constant('Felicia')).to eq('Gimodoe')
   end
 end
 

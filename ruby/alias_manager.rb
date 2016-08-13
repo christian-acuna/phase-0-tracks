@@ -1,42 +1,55 @@
-require ('byebug')
-def alias_manager(name)
-  name_array = split_name(name)
-  reversed_array = reverse_names(name_array)
-  first_name = reversed_array[0]
-  last_name = reversed_array[1]
+require 'byebug'
 
-  shifted_first = next_vowel(first_name)
-  shifted_last = next_vowel(last_name)
-  "#{shifted_first} #{shifted_last}"
+def alias_manager(real_name)
+  name_array = split_name(real_name)
+  reversed_array = reverse_names(name_array)
+
+  shifted_array = reversed_array.map do |name|
+    next_vowel_and_constant(name)
+  end
+
+  shifted_array.join(' ')
 end
 
 def split_name(name)
   name.split(' ')
 end
 
-
 def reverse_names(name_array)
   name_array.reverse
 end
-# "#{name_array[1]} #{name_array[0]}"
 
-def next_vowel(first_name)
-  char_array = first_name.downcase.chars
+def next_vowel_and_constant(name)
+  char_array = name.downcase.chars
   char_array.map! do |letter|
-    if "aeiou".include?(letter)
-      vowels = %w(a e i o u)
-      next_vowel_index = (vowels.index(letter) + 1) % 5
-      letter = vowels[next_vowel_index]
-    else
-      if 'aeiou'.include?(letter.next)
-        letter = letter.next.next
-      else
-        letter = letter.next
-      end
-    end
+    vowel_or_constant_shift(letter)
   end
   char_array.join.capitalize
 end
 
-p next_vowel('Torres')
-p next_vowel('Felicia')
+def vowel_or_constant_shift(letter)
+  vowels = 'aeiou'
+  if vowels.include?(letter)
+    letter = shift_vowel(letter)
+  elsif vowels.include?(letter.next)
+    shift_by(2, letter)
+  else
+    shift_by(1, letter)
+  end
+end
+
+def shift_vowel(letter)
+  vowels = 'aeiou'
+  next_vowel_index = (vowels.index(letter) + 1) % 5
+  vowels[next_vowel_index]
+end
+
+def shift_by(num, letter)
+  if num == 1
+    letter.next
+  else
+    letter.next.next
+  end
+end
+
+p alias_manager('Felicia Torres')
