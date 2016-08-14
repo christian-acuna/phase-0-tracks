@@ -5,7 +5,7 @@ def alias_manager(real_name)
   reversed_array = reverse_names(name_array)
 
   shifted_array = reversed_array.map do |name|
-    next_vowel_and_constant(name)
+    next_vowel_and_consonant(name)
   end
 
   shifted_array.join(' ')
@@ -19,15 +19,15 @@ def reverse_names(name_array)
   name_array.reverse
 end
 
-def next_vowel_and_constant(name)
+def next_vowel_and_consonant(name)
   char_array = name.downcase.chars
   char_array.map! do |letter|
-    vowel_or_constant_shift(letter)
+    vowel_or_consonant_shift(letter)
   end
   char_array.join.capitalize
 end
 
-def vowel_or_constant_shift(letter)
+def vowel_or_consonant_shift(letter)
   vowels = 'aeiou'
   if vowels.include?(letter)
     letter = shift_vowel(letter)
