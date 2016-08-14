@@ -13,18 +13,32 @@ describe 'reverse_names' do
 end
 
 describe 'next_vowel_and_constant' do
-  it 'shifts vowel to next vowel' do
+  it 'shifts Torres to Vussit' do
     expect(next_vowel_and_constant('Torres')).to eq('Vussit')
   end
 
-  it 'shifts vowel to next vowel' do
+  it 'shifts Felicia to Gimodoe' do
     expect(next_vowel_and_constant('Felicia')).to eq('Gimodoe')
+  end
+end
+
+describe 'shift_by' do
+  it 'shifts z to b' do
+    expect(shift_by(1,'z')).to eq('b')
+  end
+
+  it 'shifts a letter by one' do
+    expect(shift_by(1, 'c')).to eq('d')
+  end
+
+  it 'shifts a letter by two' do
+    expect(shift_by(2, 't')).to eq('v')
   end
 end
 
 
 describe 'alias_manager' do
   it 'reverse names and shifts vowels by one and constansts by one unless vowel' do
-    expect(alias_manager("Felicia Torres")).to eq('Vussit Gimodoe')
+    expect(alias_manager('Felicia Torres')).to eq('Vussit Gimodoe')
   end
 end

@@ -45,11 +45,30 @@ def shift_vowel(letter)
 end
 
 def shift_by(num, letter)
-  if num == 1
+  if letter == 'z'
+    'b'
+  elsif num == 1
     letter.next
   else
     letter.next.next
   end
 end
 
-p alias_manager('Felicia Torres')
+puts 'Welcome to the Alias Manager 3000.'
+username = ''
+fake_names_hash = {}
+  until username == 'quit'
+    puts 'Please enter a name:'
+    username = gets.chomp
+    if username.downcase == 'quit'
+      break
+    else
+      fake_names_hash[username] = alias_manager(username)
+      puts "Your fake name is #{fake_names_hash[username]}."
+    end
+  end
+puts 'Thank you for visting Alias Manager 3000. Goodbye'
+
+fake_names_hash.each do |username, fakename|
+  puts "#{username} is also known as #{fakename}."
+end
