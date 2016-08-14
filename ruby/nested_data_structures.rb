@@ -4,7 +4,7 @@ musuems = {
     pretty_name: 'Louvre',
     city: 'Paris',
     country: 'France',
-    gallery_space: 72735,
+    gallery_space: 72_735,
     year_established: 1792,
     collections: [
       'Egyptian antiquities',
@@ -21,7 +21,7 @@ musuems = {
     pretty_name: 'Tokyo National Museum',
     city: 'Tokyo',
     country: 'Japan',
-    gallery_space: 38000,
+    gallery_space: 38_000,
     year_established: 1872,
     exhibition_buildings: [
       'Honkan (Japanese Gallery)',
@@ -36,7 +36,7 @@ musuems = {
     pretty_name: 'Art Institute of Chicago',
     city: 'Chicago',
     country: 'United States',
-    gallery_space: 26000,
+    gallery_space: 26_000,
     year_established: 1870,
     collections: [
       'African Art and Indian Art of the Americas',
@@ -53,3 +53,18 @@ musuems = {
     ]
   }
 }
+p musuems[:louvre]
+p musuems[:louvre][:pretty_name]
+p musuems[:louvre][:country]
+
+p musuems[:tokyo_national_musuem]
+p musuems[:tokyo_national_musuem][:year_established]
+p musuems[:tokyo_national_musuem][:city]
+
+p musuems[:art_institute_chicago]
+p musuems[:art_institute_chicago][:collections]
+p musuems[:art_institute_chicago][:collections].last
+p musuems[:art_institute_chicago][:collections][4]
+p musuems[:art_institute_chicago][:collections][0, 2]
+p musuems[:art_institute_chicago][:collections].slice(2, 1)
+p musuems[:art_institute_chicago][:collections][0..3]
