@@ -3,7 +3,7 @@ class Santa
   attr_reader :age, :ethnicity, :gender
 
   # setter methods
-  attr_writer :gender
+  attr_accessor :gender
 
   def initialize(gender, ethnicity)
     puts 'Initialzing Santa instance...'
