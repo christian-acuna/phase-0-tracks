@@ -6,7 +6,7 @@ class Santa
   attr_accessor :gender
 
   def initialize(gender, ethnicity)
-    puts 'Initialzing Santa instance...'
+    puts 'Initialzing Santa instance...🎅'
     @gender = gender
     @ethnicity = ethnicity
     @reindeer_ranking = %w(Rudolph Dasher Dancer Prancer Vixen
@@ -15,7 +15,7 @@ class Santa
   end
 
   def speak
-    puts 'Ho, ho, ho! Haaaappy holidays!'
+    puts 'Ho, ho, ho! Haaaappy holidays!🎄 🎁 ⛄'
     puts "I am #{@gender} and my ethnicity is #{@ethnicity}."
     puts "I am #{@age} years old." unless @age == 1
     puts "I am #{@age} year old." if @age == 1
@@ -27,7 +27,7 @@ class Santa
 
   def get_mad_at(target)
     removed_reindeer = @reindeer_ranking.delete(target)
-    puts "Santa is mad at #{removed_reindeer}!"
+    puts "Santa is mad at #{removed_reindeer}! 😠"
     puts "Santa is putting #{removed_reindeer} at the back of his ranking."
     @reindeer_ranking << removed_reindeer
   end
@@ -58,7 +58,7 @@ end
 
 santas_array = generate_santas(100)
 
-example_cookies = ['sugar cookie', 'snickerdoodle', 'oatmeal',
+example_cookies = ['sugar cookie', 'snickerdoodle', 'oatmeal cookie',
                    'christmas cookie', 'chocolate chip cookie',
                    'coconut macaroon', 'peanut butter cookie']
 
