@@ -1,4 +1,10 @@
 class Santa
+  # getter methods
+  attr_reader :age, :ethnicity, :gender
+
+  # setter methods
+  attr_writer :gender
+
   def initialize(gender, ethnicity)
     puts 'Initialzing Santa instance...'
     @gender = gender
@@ -13,8 +19,13 @@ class Santa
     puts "I am #{@gender} and my ethnicity is #{@ethnicity}. I am #{@age} years old."
   end
 
-  def change_age(age)
-    @age = age * 5 + 10
+  def change_birthday
+    @age += 1
+  end
+
+  def get_mad_at(target)
+    removed_reindeer = @reindeer_ranking.delete(target)
+    @reindeer_ranking << removed_reindeer
   end
 
   def eat_milk_and_cookies(cookie_type)
@@ -43,7 +54,14 @@ example_genders.length.times do |i|
 end
 
 santas.each_with_index do |santa, index|
-  santa.change_age(index)
   santa.speak
   santa.eat_milk_and_cookies(example_cookies[index])
+  santa.gender = 'N/A'
+  puts "My changed gender is #{santa.gender}"
 end
+
+first_santa = santas.first
+first_santa.get_mad_at('Rudolph')
+p first_santa.age
+first_santa.change_birthday
+p first_santa.age
