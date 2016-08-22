@@ -3,7 +3,7 @@
 # Create a CLASS titled Museum
 # INITIALIZE with the following attributes:
 # - name
-# - location
+# - city
 # - established
 # - country
 # - visitor_count
@@ -22,12 +22,12 @@
 # - PRINT "#{name} will loan #{object_to_loan} to #{borrower} for #{length}."
 
 class Museum
-  attr_reader :name, :location, :established, :country
+  attr_reader :name, :city, :established, :country
   attr_accessor :visitor_count
 
   def initialize(args)
     @name = args[:name]
-    @location = args[:location]
+    @city = args[:city]
     @established = args[:established]
     @country = args[:country]
     @visitor_count = args[:visitor_count]
@@ -50,7 +50,7 @@ end
 
 # p the_Met = Museum.new(
 #   name: 'Metropolitan Museum of Art',
-#   location: 'New York City',
+#   city: 'New York City',
 #   established: 'April 13, 1870',
 #   country: 'United States',
 #   visitor_count: 6_533_106
@@ -71,21 +71,42 @@ end
 #   '1 year'
 # )
 
-## User Interface
-puts 'Hello, how many museums would you like to create?'
-user_input = gets.chomp
-until user_input.downcase == 'done'
+def create_museum
   input_hash = {}
-  puts 'What is the name of the museum?'
+  puts 'What is the name of the museum? (e.g., The Metropolitan Museum of Art)'
   input_hash[:name] = gets.chomp
-  puts "What city is #{name} located?"
-  input_hash[:location] = gets.chomp
-  puts "When was #{name} established?"
+  puts "What city is #{input_hash[:name]} located in?"
+  input_hash[:city] = gets.chomp
+  puts "When was #{input_hash[:name]} established?"
   input_hash[:established] = gets.chomp
+  puts "Which country is #{input_hash[:name]} located in?"
+  input_hash[:country] = gets.chomp
+  puts "How many people visit #{input_hash[:name]} every year?"
+  input_hash[:visitor_count] = gets.chomp
 
-  # - name
-  # - location
-  # - established
-  # - country
-  # - visitor_count
+  input_hash
+end
+
+## User Interface
+user_input = ''
+user_created_museums = []
+puts 'Hello, this program creates museums.'
+until user_input.downcase == 'done'
+  puts '=' * 30
+  input_hash = create_museum
+  user_museum = Museum.new(input_hash)
+  user_created_museums << user_museum
+  puts "Please type 'done' if you are finished creating museums.
+  Type 'c' if you would like to continue."
+  user_input = gets.chomp
+end
+
+puts 'Thank you for using my program. Below is a summary of the museums you created:'
+user_created_museums.each_with_index do |museum, index|
+  puts '-' * 30
+  puts "Number #{index + 1}:"
+  puts "#{museum.name.capitalize} was established in #{museum.established}."
+  puts "It is located in #{museum.city}, #{museum.country}."
+  puts "Every year #{museum.visitor_count} people visit #{museum.name}."
+  puts '-' * 30
 end
