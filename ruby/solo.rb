@@ -91,7 +91,7 @@ end
 user_input = ''
 user_created_museums = []
 puts 'Hello, this program creates museums.'
-until user_input.downcase == 'done'
+until user_input.casecmp('done').zero?
   puts '=' * 30
   input_hash = create_museum
   user_museum = Museum.new(input_hash)
@@ -102,10 +102,10 @@ until user_input.downcase == 'done'
 end
 
 puts 'Thank you for using my program. Below is a summary of the museums you created:'
+puts '-' * 30
 user_created_museums.each_with_index do |museum, index|
-  puts '-' * 30
   puts "Number #{index + 1}:"
-  puts "#{museum.name.capitalize} was established in #{museum.established}."
+  puts "#{museum.name} was established in #{museum.established}."
   puts "It is located in #{museum.city}, #{museum.country}."
   puts "Every year #{museum.visitor_count} people visit #{museum.name}."
   puts '-' * 30
