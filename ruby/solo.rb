@@ -71,7 +71,7 @@ end
 #   '1 year'
 # )
 
-def create_museum
+def create_museum_hash
   input_hash = {}
   puts 'What is the name of the museum? (e.g., The Metropolitan Museum of Art)'
   input_hash[:name] = gets.chomp
@@ -93,7 +93,7 @@ user_created_museums = []
 puts 'Hello, this program creates museums.'
 until user_input.casecmp('done').zero?
   puts '=' * 30
-  input_hash = create_museum
+  input_hash = create_museum_hash
   user_museum = Museum.new(input_hash)
   user_created_museums << user_museum
   puts "Please type 'done' if you are finished creating museums.
@@ -104,7 +104,7 @@ end
 puts 'Thank you for using my program. Below is a summary of the museums you created:'
 puts '-' * 30
 user_created_museums.each_with_index do |museum, index|
-  puts "Number #{index + 1}:"
+  puts "Museum #{index + 1}:"
   puts "#{museum.name} was established in #{museum.established}."
   puts "It is located in #{museum.city}, #{museum.country}."
   puts "Every year #{museum.visitor_count} people visit #{museum.name}."
