@@ -85,3 +85,32 @@ alaska.virus_effects
 
 #=======================================================================
 # Reflection Section
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+
+# The first hash syntax uses a hash rocket (=>) with a string as key. The
+# second syntax uses syntactic sugar to make the key a symbol with the : after
+# the key name
+
+# What does require_relative do? How is it different from require?
+
+# require_relative allows you to load a file relative to the current file.
+# require uses the current directory that the program is running in.
+
+# What are some ways to iterate through a hash?
+
+# One way to iterate over a hash is with #each and define the key and value in
+# the argument block.
+
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+
+# At first nothing, but with the help of our GPS we noticed that the methods in
+# virus_effects were being called with instance variables as their arguments.
+# Since instance variables are available throughout the whole class, there is no
+# need to pass them as arguments to a method.
+
+
+# What concept did you most solidify in this challenge?
+
+# I think I had a breakthrough moment with identifying the scope of different
+# variables. I also solidified my understanding of accessing values in a nested
+# hash.
