@@ -48,8 +48,20 @@ function keyValueMatch(objectOne, objectTwo) {
 
   return matches > 0;
 }
+
 //pseudocode for randomTestData
-// 
+// CREATE function titled randomTestData that takes an integer called length as a paramater
+// CREATE an empty array
+// FOR each iteration of the loop generate a word of length randomNumber
+// GENERATE a random number between 1 and 10 and store in variable randomNumber
+// CREATE variable word as an empty string
+// - FOR each random word take a random char from variable possibleLetters
+// - GENERATE randomLetter
+// - ADD random char to word
+// PUSH new random word onto array
+// REPEAT until i is greater than length
+// RETURN array  
+
 function randomTestData(length) {
   var array = [];
 
