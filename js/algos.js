@@ -48,7 +48,27 @@ function keyValueMatch(objectOne, objectTwo) {
 
   return matches > 0;
 }
+//pseudocode for randomTestData
+// 
+function randomTestData(length) {
+  var array = [];
 
+  for (var i = 0; i < length; i++) {
+    var randomNumber = Math.floor((Math.random() * 10) + 1);
+    var word = '';
+    for (var j = 0; j < randomNumber; j++) {
+      var possibleLetters = 'abcdefghijklmnopqrstuvwxyz';
+      var randomLetter = (Math.floor(Math.random() * possibleLetters.length));
+      word += possibleLetters.charAt(randomLetter);
+    }
+
+    array.push(word);
+  }
+
+  return array;
+}
+
+// Driver code
 var arrayTest = ["long phrase", "longest phrase", "longer phrase"];
 console.log(longestWord(arrayTest));
 var test = ["one", "three", "superlongword"];
@@ -65,3 +85,9 @@ console.log(keyValueMatch(three, four));
 five = { name: "Bob", age: 53 };
 six = { name: "Steven", age: 54 };
 console.log(keyValueMatch(five, six));
+
+for (var i = 0; i < 10; i++) {
+  var randomArrayLength = Math.floor((Math.random() * 10) + 1);
+  var randomArray = randomTestData(randomArrayLength);
+  console.log('The longest word is ' + longestWord(randomArray) + '.');
+}
