@@ -56,3 +56,18 @@ sqlite> SELECT * FROM records;
 3|Dragon and tiger vessel (zun)|2371|Late Shang (1300–1046 BC)|true|4
 4|Nirvana|10599|Heian Period|true|1
 8|Aphrodite|44909|Hellenistic Art (3rd-1st centuries BC)|true|2
+
+INNER JOIN
+
+sqlite> SELECT name, place, title from museums JOIN records where museums.id = records.museum_id;
+National Museum of China|Beijing, China|Jade dragon
+National Museum of China|Beijing, China|Guojizibai water vessel (pan)
+National Museum of China|Beijing, China|Dragon and tiger vessel (zun)
+Tokyo National Museum|Tokyo, Japan|Nirvana
+Louvre|Paris, France|Aphrodite
+
+LEFT JOIN
+sqlite> SELECT name, place, visitor_count, title from museums m LEFT JOIN records r ON  m.id = r.museum_id WHERE place = "Beijing, China";
+National Museum of China|Beijing, China|7500000|Dragon and tiger vessel (zun)
+National Museum of China|Beijing, China|7500000|Guojizibai water vessel (pan)
+National Museum of China|Beijing, China|7500000|Jade dragon
