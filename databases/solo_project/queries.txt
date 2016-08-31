@@ -1,0 +1,58 @@
+1. Display the information in one table (either table is fine).
+sqlite> SELECT * FROM museums;
+1|Tokyo National Museum|Tokyo, Japan|1400000|1872|true
+2|Louvre|Paris, France|9260000|1792|true
+3|Art Institute of Chicago|Chicago, United States|1500000|1870|true
+4|National Museum of China|Beijing, China|7500000|2003|true
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+9|Louis XIV (1638-1715)|44909|French|true|2
+sqlite> UPDATE records SET on_display="false" WHERE id = 9;
+sqlite> SELECT * FROM records WHERE id = 9;
+9|Louis XIV (1638-1715)|44909|French|false|2
+
+3. Display the information in both tables using one query.
+sqlite> SELECT * FROM records, museums WHERE records.museum_id = museums.id;
+1|Jade dragon|2326|Hongshan Culture (6000-5000 BC)|true|4|4|National Museum of China|Beijing, China|7500000|2003|true
+2|Guojizibai water vessel (pan)|2330|Late Western Zhou (c. 9th century - 771 BC)|true|4|4|National Museum of China|Beijing, China|7500000|2003|true
+3|Dragon and tiger vessel (zun)|2371|Late Shang (1300–1046 BC)|true|4|4|National Museum of China|Beijing, China|7500000|2003|true
+4|Nirvana|10599|Heian Period|true|1|1|Tokyo National Museum|Tokyo, Japan|1400000|1872|true
+5|Senju Kannon (Sahasrabhuja)|10506|Heian Period, 12th century|false|1|1|Tokyo National Museum|Tokyo, Japan|1400000|1872|true
+6|American Gothic, 1930|6565|American, 1891-1942|false|3|3|Art Institute of Chicago|Chicago, United States|1500000|1870|true
+7|A Pair of Carp|185001|Joseon dynasty (1392–1910)|false|3|3|Art Institute of Chicago|Chicago, United States|1500000|1870|true
+8|Aphrodite|44909|Hellenistic Art (3rd-1st centuries BC)|true|2|2|Louvre|Paris, France|9260000|1792|true
+9|Louis XIV (1638-1715)|44909|French|false|2|2|Louvre|Paris, France|9260000|1792|true
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+sqlite> SELECT records.title, museums.name FROM records, museums WHERE records.museum_id = museums.id;
+Jade dragon|National Museum of China
+Guojizibai water vessel (pan)|National Museum of China
+Dragon and tiger vessel (zun)|National Museum of China
+Nirvana|Tokyo National Museum
+Senju Kannon (Sahasrabhuja)|Tokyo National Museum
+American Gothic, 1930|Art Institute of Chicago
+A Pair of Carp|Art Institute of Chicago
+Aphrodite|Louvre
+Louis XIV (1638-1715)|Louvre
+
+5.
+Delete an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> SELECT * FROM records;
+1|Jade dragon|2326|Hongshan Culture (6000-5000 BC)|true|4
+2|Guojizibai water vessel (pan)|2330|Late Western Zhou (c. 9th century - 771 BC)|true|4
+3|Dragon and tiger vessel (zun)|2371|Late Shang (1300–1046 BC)|true|4
+4|Nirvana|10599|Heian Period|true|1
+5|Senju Kannon (Sahasrabhuja)|10506|Heian Period, 12th century|false|1
+6|American Gothic, 1930|6565|American, 1891-1942|false|3
+7|A Pair of Carp|185001|Joseon dynasty (1392–1910)|false|3
+8|Aphrodite|44909|Hellenistic Art (3rd-1st centuries BC)|true|2
+9|Louis XIV (1638-1715)|44909|French|false|2
+sqlite> DELETE FROM records WHERE on_display = "false";
+sqlite> SELECT * FROM records;
+1|Jade dragon|2326|Hongshan Culture (6000-5000 BC)|true|4
+2|Guojizibai water vessel (pan)|2330|Late Western Zhou (c. 9th century - 771 BC)|true|4
+3|Dragon and tiger vessel (zun)|2371|Late Shang (1300–1046 BC)|true|4
+4|Nirvana|10599|Heian Period|true|1
+8|Aphrodite|44909|Hellenistic Art (3rd-1st centuries BC)|true|2
