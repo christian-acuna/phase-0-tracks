@@ -18,6 +18,12 @@ class Student
     rows.map do |row|
       Student.new(*row)
     end
+  end
 
+  def self.where(condition, *args)
+    rows = $db.execute("SELECT * FROM students WHERE #{condition}", args)
+    rows.map do |row|
+      Student.new(*row)
+    end
   end
 end
