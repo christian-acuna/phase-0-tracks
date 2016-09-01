@@ -1,0 +1,20 @@
+1. Three table join
+sqlite> SELECT * FROM users JOIN reviews ON reviews.user_id = users.id JOIN business ON reviews.business_id = business.id;
+1|Christian|Acuna|1|7|Decent place|3|1|3|The Beagle Nightclub
+2|Alex|Perez|2|6|Pretty good|6|2|6|Sushi
+4|John|Doe|3|9|GREAT!!!!|5|4|5|Plumbing by Janet
+2|Alex|Perez|4|1|Terrible|7|2|7|JoeBob's Sportz Barn
+
+2. Selectively choosing columns
+sqlite> SELECT u.first_name, r.stars, r.comment, b.name FROM users u JOIN reviews r ON r.user_id = u.id JOIN business b ON r.business_id = b.id;
+Christian|7|Decent place|The Beagle Nightclub
+Alex|6|Pretty good|Sushi
+John|9|GREAT!!!!|Plumbing by Janet
+Alex|1|Terrible|JoeBob's Sportz Barn
+
+3. Filter results for one business
+sqlite> SELECT u.first_name, r.stars, r.comment, b.name
+   ...> FROM users u JOIN reviews r ON r.user_id = u.id
+   ...> JOIN business b ON r.business_id = b.id
+   ...> WHERE b.id = 6;
+Alex|6|Pretty good|Sushi
