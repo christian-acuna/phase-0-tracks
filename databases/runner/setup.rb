@@ -50,9 +50,9 @@ module RunTrackerDB
   def self.seed_runs(*values)
     # https://stackoverflow.com/questions/14202944/sqlite-select-random-datetime-in-range
     random_date = <<-DATE
-    datetime(strftime('%s', '2000-01-01 00:00:00') +
-                abs(random() % (strftime('%s', '2000-01-31 23:59:59') -
-                                strftime('%s', '2000-01-01 00:00:00'))
+    datetime(strftime('%s', '2016-01-01 00:00:00') +
+                abs(random() % (strftime('%s', '2016-01-31 23:59:59') -
+                                strftime('%s', '2016-01-01 00:00:00'))
                    ), 'unixepoch')
                    DATE
     seed_runs_sql = <<-SQL
