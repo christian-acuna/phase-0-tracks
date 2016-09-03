@@ -62,18 +62,18 @@ module RunTrackerDB
     $db.execute(seed_runs_sql, values)
   end
 end
-
-RunTrackerDB.setup
-100.times do
-  RunTrackerDB.seed_users(Faker::Name.first_name, Faker::Name.last_name, 'M', Faker::Internet.email)
-end
-100.times do
-  RunTrackerDB.seed_users(Faker::Name.first_name, Faker::Name.last_name, 'F', Faker::Internet.email)
-end
-
-100.times do
-  location = "#{Faker::Address.city}, #{Faker::Address.state_abbr}"
-  RunTrackerDB.seed_runs(Faker::Number.number(2), Faker::Number.between(1, 700),
-                         location,
-                         Faker::Number.between(1, 200))
-end
+# 
+# RunTrackerDB.setup
+# 100.times do
+#   RunTrackerDB.seed_users(Faker::Name.first_name, Faker::Name.last_name, 'M', Faker::Internet.email)
+# end
+# 100.times do
+#   RunTrackerDB.seed_users(Faker::Name.first_name, Faker::Name.last_name, 'F', Faker::Internet.email)
+# end
+#
+# 100.times do
+#   location = "#{Faker::Address.city}, #{Faker::Address.state_abbr}"
+#   RunTrackerDB.seed_runs(Faker::Number.number(2), Faker::Number.between(1, 700),
+#                          location,
+#                          Faker::Number.between(1, 200))
+# end
