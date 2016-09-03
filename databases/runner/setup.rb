@@ -38,6 +38,20 @@ module RunTrackerDB
     $db.execute(create_runs)
     $db.execute('CREATE INDEX runs_user_id ON runs(user_id);')
   end
+
+  def self.seed_users(*values)
+    seed_users_sql = <<-SQL
+      INSERT INTO users
+      VALUES (NULL, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'));
+    SQL
+    $db.execute(seed_users_sql, *values)
+  end
 end
 
 RunTrackerDB.setup
+100.times do
+  RunTrackerDB.seed_users(Faker::Name.first_name, Faker::Name.last_name, 'M', Faker::Internet.email)
+end
+100.times do
+  RunTrackerDB.seed_users(Faker::Name.first_name, Faker::Name.last_name, 'F', Faker::Internet.email)
+end
