@@ -16,32 +16,33 @@ class Run
   end
 
   def self.all
-    row = $db.execute('SELECT * FROM runs;')
-
-    row.map do |run_attributes|
-      Run.new(run_attributes)
-    end
+    where('1 = 1')
   end
 
   def self.where(condition, *values)
-    data = $db.execute("SELECT * FROM runs WHERE #{condition}", *values)
+    data = $db.execute("SELECT * FROM #{table_name} WHERE #{condition}", *values)
+    create_runs(data)
+  end
 
-    data.map do |run_attributes|
-      Run.new(run_attributes)
-    end
+  def self.table_name
+    'runs'
+  end
+
+  def table_name
+    self.class.table_name
   end
 
   def save
     if id.nil?
       save_sql = <<-SQL
-        INSERT INTO runs
+        INSERT INTO #{table_name}
         VALUES (NULL, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
       SQL
       $db.execute(save_sql, [duration, calories, location, user_id, ran_at])
       self.id = $db.last_insert_row_id
     else
       update_run = <<-SQL
-        UPDATE runs
+        UPDATE #{table_name}
         SET duration = ?,
             calories = ?,
             location = ?,
@@ -51,6 +52,14 @@ class Run
         WHERE id = ?
       SQL
       $db.execute(update_run, [duration, calories, location, user_id, ran_at, id])
+    end
+  end
+
+  private
+
+  def self.create_runs(data)
+    data.map do |run_attributes|
+      Run.new(run_attributes)
     end
   end
 end
