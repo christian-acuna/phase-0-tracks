@@ -7,7 +7,6 @@ class Run
   def initialize(attributes = {})
     @id = attributes['id']
     @duration = attributes['duration']
-    @duration = attributes['duration']
     @calories = attributes['calories']
     @location = attributes['location']
     @user_id = attributes['user_id']
@@ -31,7 +30,36 @@ class Run
       Run.new(run_attributes)
     end
   end
+
+  def save
+    if id.nil?
+      save_sql = <<-SQL
+        INSERT INTO runs
+        VALUES (NULL, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+      SQL
+      $db.execute(save_sql, [duration, calories, location, user_id, ran_at])
+      self.id = $db.last_insert_row_id
+    else
+      update_run = <<-SQL
+        UPDATE runs
+        SET duration = ?,
+            calories = ?,
+            location = ?,
+            user_id = ?,
+            ran_at = ?,
+            updated_at = DATETIME('now')
+        WHERE id = ?
+      SQL
+      $db.execute(update_run, [duration, calories, location, user_id, ran_at, id])
+    end
+  end
 end
 
 # p Run.all
-p Run.where('id = ?', 100)
+# p Run.where('id = ?', 100)
+#
+# p run = Run.new('duration' => 32, 'calories' => 120,
+#               'location' => 'Los Angeles, CA',
+#               'user_id' => 1, 'ran_at' => '20016-08-28')
+#
+# p run.save
