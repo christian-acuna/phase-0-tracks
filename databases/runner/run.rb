@@ -1,5 +1,3 @@
-require './setup.rb'
-
 class Run
   attr_accessor :id, :duration, :calories, :location, :user_id,
                 :ran_at, :created_at, :updated_at
