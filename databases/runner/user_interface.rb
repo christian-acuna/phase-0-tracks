@@ -19,6 +19,12 @@ def add_new_run(run_hash)
   Run.where('id = ?', id).first
 end
 
+def add_new_user(user_hash)
+  new_user = User.new(user_hash)
+  id = new_user.save
+  User.where('id = ?', id).first
+end
+
 def print_run(run)
   puts "Duration: #{run.duration}"
   puts "Calories: #{run.calories}"
@@ -69,6 +75,7 @@ add_or_find_user = <<-TEXT
 +---+----------------------------+
 | 1 | Add New User               |
 | 2 | Find User by Email Address |
+| 3 | Exit                       |
 +---+----------------------------+
 TEXT
 
@@ -79,57 +86,74 @@ add_run_update_or_view_runs = <<-TEXT
 | 1 | Add a new run           |
 | 2 | View all runs           |
 | 3 | Update user information |
-| 4 | Exit                    |
+| 4 | Back                    |
 +---+-------------------------+
 TEXT
-
-puts add_or_find_user
-user_input = gets.chomp.to_i
-path = ''
-user = nil
-case user_input
-when 1
-  puts 'add new user'
-when 2
-  puts 'Please enter a valid email address:'
-  email = gets.chomp
-  user = find_user_by_email(email)
-  print_user(user)
-  path = 'email'
-else
-  puts 'please enter 1 or 2'
-end
-
-if path == 'email'
-  puts add_run_update_or_view_runs
+user_input = nil
+until user_input == 3
+  puts add_or_find_user
   user_input = gets.chomp.to_i
-end
-
-case user_input
-when 1
-  puts 'Add a new run'
-  run_hash = {}
-  run_hash['user_id'] = user.id
-  puts 'Please enter the duration of the run in minutes:'
-  run_hash['duration'] = gets.chomp.to_i
-  puts 'Please enter calories burned during run:'
-  run_hash['calories'] = gets.chomp.to_i
-  puts 'Please enter the location of the run:'
-  run_hash['location'] = gets.chomp
-  puts 'Please enter the date of the run (YYYY-MM-DD):'
-  run_hash['ran_at'] = gets.chomp
-  new_run = add_new_run(run_hash)
-  print_run(new_run)
-when 2
-  puts 'View all'
-  p user.id
-  runs = Run.where('user_id = ?', user.id)
-  runs.each do |run|
-    puts '=' * 30
-    print_run(run)
+  path = ''
+  user = nil
+  case user_input
+  when 1
+    user_hash = {}
+    puts 'Please enter your first name:'
+    user_hash['first_name'] = gets.chomp
+    puts 'Please enter your last name:'
+    user_hash['last_name'] = gets.chomp
+    puts 'Please enter your gender (M/F):'
+    user_hash['gender'] = gets.chomp
+    puts 'Please enter a valid email:'
+    user_hash['email'] = gets.chomp
+    new_user = add_new_user(user_hash)
+    print_user(new_user)
+  when 2
+    puts 'Please enter a valid email address:'
+    email = gets.chomp
+    user = find_user_by_email(email)
+    print_user(user)
+    path = 'email'
+  when 3
+    break
+  else
+    puts 'please enter 1 or 2'
+    next
   end
-when 3
-  puts 'Update user info'
-when 4
-  puts 'exiting....'
+
+  user_input_email = nil
+  until user_input_email == 4
+    if path == 'email'
+      puts add_run_update_or_view_runs
+      user_input_email = gets.chomp.to_i
+    end
+
+    case user_input_email
+    when 1
+      run_hash = {}
+      run_hash['user_id'] = user.id
+      puts 'Please enter the duration of the run in minutes:'
+      run_hash['duration'] = gets.chomp.to_i
+      puts 'Please enter calories burned during run:'
+      run_hash['calories'] = gets.chomp.to_i
+      puts 'Please enter the location of the run:'
+      run_hash['location'] = gets.chomp
+      puts 'Please enter the date of the run (YYYY-MM-DD):'
+      run_hash['ran_at'] = gets.chomp
+      new_run = add_new_run(run_hash)
+      print_run(new_run)
+    when 2
+      puts 'View all'
+      p user.id
+      runs = Run.where('user_id = ?', user.id)
+      runs.each do |run|
+        puts '=' * 30
+        print_run(run)
+      end
+    when 3
+      puts 'Update user info'
+    when 4
+      puts 'Going Back....'
+    end
+  end
 end
