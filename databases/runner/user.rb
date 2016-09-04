@@ -59,4 +59,4 @@ class User
   end
 end
 
-User.new('first_name' => 'Chris', 'last_name' => 'Acuna', 'gender' => 'M', 'email' => 'cacuna@gmail.com')
+# User.new('first_name' => 'Chris', 'last_name' => 'Acuna', 'gender' => 'M', 'email' => 'cacuna@gmail.com')
