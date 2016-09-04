@@ -32,6 +32,51 @@ def print_run(run)
   puts "Date: #{run.ran_at}"
   puts "User: #{run.user_id}"
 end
+
+
+
+def update_user(user)
+  update_input = nil
+  print_user(user)
+  until update_input == 5
+    update_user_options = <<-TEXT
+    +---+-------------------------+
+    |   |      Options            |
+    +---+-------------------------+
+    | 1 | First name              |
+    | 2 | Last name               |
+    | 3 | Gender                  |
+    | 4 | Email                   |
+    | 5 | Done                    |
+    +---+-------------------------+
+    TEXT
+    puts 'What do you want to update?'
+    puts update_user_options
+    update_input = gets.chomp.to_i
+    case update_input
+    when 1
+      puts 'Please enter a new first name:'
+      user.first_name = gets.chomp
+    when 2
+      puts 'Please enter a new last name:'
+      user.last_name = gets.chomp
+    when 3
+      puts 'Please enter a new gender (M/F):'
+      user.gender = gets.chomp
+    when 4
+      puts 'Please enter a new email:'
+      user.email = gets.chomp
+    else
+      puts 'Please enter a vaid number 1 - 5'
+    end
+    user.save
+  end
+  puts '=' * 30
+  puts 'Here is your updated information:'
+  print_user(user)
+end
+
+# Driver Code
 #########
 puts 'Hello, Welcome to the Run Tracker app.'
 hello_there = <<-HELLO
@@ -108,14 +153,21 @@ until user_input == 3
     puts 'Please enter a valid email:'
     user_hash['email'] = gets.chomp
     new_user = add_new_user(user_hash)
+    puts '=' * 30
+    puts 'Here is your user information:'
     print_user(new_user)
+    user = find_user_by_email(new_user.email)
   when 2
     puts 'Please enter a valid email address:'
     email = gets.chomp
     puts 'Finding user...........'
+    user = find_user_by_email(email)
+    if user.nil?
+      puts 'Could not find user. Please try again'
+      next
+    end
     puts 'User found!'
     puts '+' * 30
-    user = find_user_by_email(email)
     print_user(user)
     puts '+' * 30
     path = 'email'
@@ -151,14 +203,14 @@ until user_input == 3
   NEXT
 
   user_input_email = nil
-  puts what_to_do_next
   until user_input_email == 4
-    if path == 'email'
-      puts '=' * 30
-      puts 'What do you want to do next?'
-      puts add_run_update_or_view_runs
-      user_input_email = gets.chomp.to_i
-    end
+    puts '=' * 30
+    puts what_to_do_next
+    puts '=' * 30
+    puts 'What do you want to do next?'
+    puts add_run_update_or_view_runs
+    user_input_email = gets.chomp.to_i
+
 
     case user_input_email
     when 1
@@ -183,7 +235,10 @@ until user_input == 3
         print_run(run)
       end
     when 3
-      puts 'Update user info'
+      puts '=' * 30
+      puts 'Okay, you would like to update your current information.'
+      puts 'Here is your current information:'
+      update_user(user)
     when 4
       puts 'Going Back....'
     end
