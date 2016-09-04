@@ -73,8 +73,8 @@ add_or_find_user = <<-TEXT
 +---+----------------------------+
 |   |       Options              |
 +---+----------------------------+
-| 1 | Add New User               |
-| 2 | Find User by Email Address |
+| 1 | Add new user               |
+| 2 | Find user by email address |
 | 3 | Exit                       |
 +---+----------------------------+
 TEXT
