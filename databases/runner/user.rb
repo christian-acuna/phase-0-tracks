@@ -1,5 +1,3 @@
-require './run.rb'
-
 class User
   attr_accessor :id, :first_name, :last_name, :gender, :email, :created_at, :updated_at
 
@@ -61,4 +59,4 @@ class User
   end
 end
 
-# User.new('first_name' => 'Chris', 'last_name' => 'Acuna', 'gender' => 'M', 'email' => 'cacuna@gmail.com')
+User.new('first_name' => 'Chris', 'last_name' => 'Acuna', 'gender' => 'M', 'email' => 'cacuna@gmail.com')
